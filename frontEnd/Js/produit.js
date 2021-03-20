@@ -1,12 +1,10 @@
 // création variable qui récupère l'id choisis dans la selection produit dans l'index
 const params = new URLSearchParams(window.location.search);
 var teddieId = params.get("id");
-var myProduct;
-var teddies;
 
 //fonction qui récupère bien les donnée API du produit selectionné.
-async function productSelection() {
-    fetch(url + "/" + teddieId).then(function (response) {
+var productSelection = async () => {
+    await fetch(url + "/" + teddieId).then(function (response) {
         response.json().then(function (data) {
             myProduct = data;
             var teddie;
@@ -21,6 +19,7 @@ async function productSelection() {
                 <select name="colors" id="colors">
                 ${this.showOptionColor(myProduct.colors)}
           </select>
+          <a href="produit.html?id=" class="btn btn-primary">Ajouter au Panier</a>
             </div>
         </div>
         `;
@@ -28,7 +27,12 @@ async function productSelection() {
 
 
     });
-}
+};
+
+
+
+
+
 
 productSelection();
 
