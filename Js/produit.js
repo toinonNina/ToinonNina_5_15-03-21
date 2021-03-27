@@ -52,13 +52,16 @@ var productSelection = async () => {
                     imageUrl: myProduct.imageUrl,
                     quantity: 1,
                 };
+
+                //déclaration de la variable dans laquelle on met les key et les values qui sont dans le local storage
                 let showproductLocalStorage = JSON.parse(localStorage.getItem('product'));
-                console.log(showproductLocalStorage);
+                //json.parse pour convertir les données au format json qui sont dans le localStorage en objet Javascript
+
 
 
                 //fonction ajouter un produit sélectionné dans le localStorage 
 
-                const ajoutproduitsLocalStorage = () => {
+                const addProducLocalStorage = () => {
 
                     //ajout dans le tableau de l'objet avec les value choisi par l'utilisateur
 
@@ -71,7 +74,7 @@ var productSelection = async () => {
                 //s'il y a deja des prduits enregistré dans le local storage
 
                 if (showproductLocalStorage) {
-                    ajoutproduitsLocalStorage();
+                    addProducLocalStorage();
                     console.log(showproductLocalStorage);
                     popConfirmation();
                 }
@@ -79,7 +82,7 @@ var productSelection = async () => {
 
                 else {
                     showproductLocalStorage = [];
-                    ajoutproduitsLocalStorage();
+                    addProducLocalStorage();
                     console.log(showproductLocalStorage);
                     popConfirmation();
                 }

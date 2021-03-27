@@ -111,6 +111,23 @@ h1 {
     font-size: 1.1em;;
     border-radius: 10px;
 }
+
+.panier_vide {
+    text-align: center;
+    background-color: #0d4d66;
+    padding: 10px;
+    color: white;
+}
+
+.th-img {
+    width: 100%;
+    border: 1px solid red;
+}
+
+.table {
+    margin:auto;
+    width: 80%;
+}
 footer { 
     display: flex;
     text-align:center;
@@ -170,5 +187,19 @@ footer li {
     .product-img {
       
         border-radius: 20px 20px 0 0 ;
+    }
+}
+
+@media (min-width: 426px) and (max-width:768px) {
+    .th-img {
+        width: 60%;
+        
+    }
+}
+
+@media (min-width: 769px) {
+    .th-img{
+        width: 250px;
+        
     }
 }
