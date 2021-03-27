@@ -10,7 +10,7 @@ function showOptionColor(colors) {
 };
 //fonction fenètre popup 
 const popConfirmation = () => {
-    if (window.confirm(`${myProduct.name} a bien été ajouté au pânier consultez le panier OK ou revenir a l'acceuil ANNULER`)) {
+    if (window.confirm(`${myProduct.name} a bien été ajouté au panier consultez le panier OK où revenir à l'accueil ANNULER`)) {
         window.location.href = "panier.html";
     } else {
         window.location.href = "index.html";
