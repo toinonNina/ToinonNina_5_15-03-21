@@ -1,5 +1,5 @@
 const uuid = require('uuid/v1');
-const Teddy = require('../../models/Teddy');
+const Teddy = require('../models/Teddy');
 
 exports.getAllTeddies = (req, res, next) => {
   Teddy.find().then(
@@ -30,7 +30,7 @@ exports.getOneTeddy = (req, res, next) => {
     () => {
       res.status(500).send(new Error('Database error!'));
     }
-  );
+  )
 };
 
 /**
@@ -71,7 +71,7 @@ exports.orderTeddies = (req, res, next) => {
         () => {
           reject('Database error!');
         }
-      );
+      )
     });
     queries.push(queryPromise);
   }
@@ -82,7 +82,7 @@ exports.orderTeddies = (req, res, next) => {
         contact: req.body.contact,
         products: teddies,
         orderId: orderId
-      });
+      })
     }
   ).catch(
     (error) => {
