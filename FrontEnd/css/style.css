@@ -132,10 +132,6 @@ h1 {
     color: white;
 }
 
-.table {
-    border-collapse: separate;
-}
-
 .th-img {
     width: 100%;
 }
@@ -143,12 +139,14 @@ h1 {
 .table td,
 .table th {
     vertical-align: middle;
+    padding: 7px;
 }
 
 .table {
     margin: auto;
     width: 80%;
     border: 2px solid #dee2e6;
+    font-size: 15px;
 }
 
 thead {
@@ -156,17 +154,34 @@ thead {
     color: white;
 }
 
+.table thead th {
+    width: 15%;
+}
+
 th {
     border: 2px solid #dee2e6;
 }
 
 td {
-    border: 2px solid #dee2e6;
+    border-top: 2px solid #dee2e6;
     background-color: ghostwhite;
 }
 
+.titre-panier {
+    font-size: 15px;
+}
+
+.delete {
+    text-align: center;
+}
+
+.btn-delete {
+    padding: 5px;
+    font-size: 15px;
+}
+
 tr {
-    border: 2px solid #dee2e6;
+    border-top: 2px solid #dee2e6;
 }
 
 footer {

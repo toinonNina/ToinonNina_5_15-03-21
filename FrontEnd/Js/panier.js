@@ -6,7 +6,7 @@ console.log(showproductLocalStorage);
 //affichage des produits du panier
 const showBasket = document.querySelector("#monpanier");
 const showBasketnotempty = document.querySelector("#contenue");
-console.log(showBasket);
+
 //panier est vide : afficher panier vide 
 
 if (showproductLocalStorage === null) {
@@ -17,18 +17,52 @@ if (showproductLocalStorage === null) {
     showBasket.innerHTML = basketempty;
 } else {
     let showProductBasket = [];
+
     for (j = 0; j < showproductLocalStorage.length; j++) {
 
         showProductBasket = showProductBasket + `
         <tr>
         <td scope="row"><img class="th-img" src="${showproductLocalStorage[j].imageUrl}"></td>
-        <td>${showproductLocalStorage[j].name}</td>
-        <td>${showproductLocalStorage[j].option_product}</td>
-        <td>${showproductLocalStorage[j].price}€</td>
+        <td><h2 class ="titre-panier panierh2">${showproductLocalStorage[j].name}</h2> <h3 class ="titre-panier panierh3">${showproductLocalStorage[j].option_product}</h3></td>
+        <td><h4 class ="titre-panier panierh4">${showproductLocalStorage[j].price}€</h4></td>
+        <td>${showproductLocalStorage[j].quantity}</td>
+        <td class ="delete"><button class = "btn btn-primary btn-delete"><i class="fas fa-trash-alt"></i></button></td>
     </tr>
         `;
     }
     if (j == showproductLocalStorage.length) {
         showBasketnotempty.innerHTML = showProductBasket;
+
     }
+
+
 }
+
+// gestion bouton supression article
+
+
+// récupérer l'id des produits et les options couleurs
+// SI l'id et option couleur strictement égale il faut incrémenter la quantité de +1 a chaque fois
+// function + onclick si valeur quantité n'est pas zero alors value quantité ++ 
+//new - function onclick si value quantité plus que 0 value --
+// ecoute bouton supprimé pour supprimer produit tableau 
+
+const btn_delete = document.querySelectorAll(".btn-delete");
+
+// price égale quantité fois prix
+// Sous total = +eachprix
+let teddyPrice = JSON.parse(localStorage.getItem('product'));
+
+let total = function calculTotal() {
+    let teddyPriceArr = [];
+    for (l = 0; l < teddyPrice.length; l++) {
+        teddyPriceArr.push(teddyPrice[l].price);
+
+    }
+    let totalAmount = teddyPriceArr.reduce((total, current) => total + current, 0);
+    return totalAmount;
+
+}();
+localStorage.setItem('total', total);
+const sousTotal = document.querySelector(".sous_Total");
+sousTotal.innerHTML = total + " €";

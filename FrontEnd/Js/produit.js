@@ -4,9 +4,9 @@ var teddieId = params.get("id");
 var myProduct;
 
 //fonction qui récupère bien les donnée API du produit selectionné.
-var productSelection = async () => {
-    await fetch(url + "/" + teddieId).then(function (response) {
-        response.json().then(function (data) {
+var productSelection = async() => {
+    await fetch(url + "/" + teddieId).then(function(response) {
+        response.json().then(function(data) {
             myProduct = data;
             var teddie;
             //on y inclus le html pour l'afficher en y incluant la fonction pour les options
@@ -37,7 +37,7 @@ var productSelection = async () => {
             const btn = document.querySelector('.myBtn');
 
             // écouter le bouton et envoyer le panier 
-            btn.onclick = function () {
+            btn.onclick = function(event) {
                 event.preventDefault();
                 event.stopPropagation();
                 //mettre le choix de l'utilisateur dans une variable
@@ -79,7 +79,6 @@ var productSelection = async () => {
                     popConfirmation();
                 }
                 // s'il n'y a pas de produit d'enregistré dans le local storage
-
                 else {
                     showproductLocalStorage = [];
                     addProducLocalStorage();
@@ -91,5 +90,3 @@ var productSelection = async () => {
     });
 };
 productSelection();
-
-
