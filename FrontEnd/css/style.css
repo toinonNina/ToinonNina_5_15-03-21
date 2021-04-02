@@ -144,7 +144,6 @@ h1 {
 
 .table {
     margin: auto;
-    width: 80%;
     border: 2px solid #dee2e6;
     font-size: 15px;
 }
@@ -169,9 +168,47 @@ td {
 
 .titre-panier {
     font-size: 15px;
+    text-align: center;
 }
 
-.delete {
+.titreNom {
+    font-size: 15px;
+}
+
+h2 {
+    font-weight: bold;
+    color: #0d4d66;
+    font-size: 18px;
+}
+
+.counter {
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    appearance: none;
+    border: 0;
+    background: white;
+    text-align: center;
+    width: 42px;
+    line-height: 24px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.up,
+.down {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.delete,
+.vide_panier {
     text-align: center;
 }
 
@@ -250,5 +287,17 @@ footer li {
 @media (min-width: 769px) {
     .th-img {
         width: 250px;
+    }
+}
+
+@media (min-width:768px) {
+    .table {
+        width: 80%;
+    }
+    .titre-panier {
+        font-size: 18px;
+    }
+    .counter {
+        flex-direction: row;
     }
 }
