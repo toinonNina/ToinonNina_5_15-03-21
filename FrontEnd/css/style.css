@@ -95,15 +95,11 @@ h1 {
 .card-product {
     margin-top: 140px;
     display: flex;
-    flex-direction: row;
     border-radius: 20px 20px;
     width: 41%;
-    margin-left: 15%;
-    margin-right: 0;
 }
 
 .product-body {
-    flex: 1 0 auto;
     height: 400px;
     display: flex;
     width: 100%;
@@ -123,6 +119,11 @@ h1 {
     font-size: 1.1em;
     ;
     border-radius: 10px;
+}
+
+.colortitle {
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .panier_vide {
@@ -171,14 +172,10 @@ td {
     text-align: center;
 }
 
-.titreNom {
-    font-size: 15px;
-}
-
 h2 {
     font-weight: bold;
     color: #0d4d66;
-    font-size: 18px;
+    font-size: 20px !important;
 }
 
 .counter {

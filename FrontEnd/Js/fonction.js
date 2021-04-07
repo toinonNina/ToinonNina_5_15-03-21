@@ -8,6 +8,12 @@ function showOptionColor(colors) {
     }
     return optionColor;
 };
+
+// création variable qui récupère l'id choisis dans la selection produit dans l'index
+const params = new URLSearchParams(window.location.search);
+var teddieId = params.get("id");
+var myProduct;
+
 //fonction fenètre popup 
 const popConfirmation = () => {
     if (window.confirm(`${myProduct.name} a bien été ajouté au panier consultez le panier OK où revenir à l'accueil ANNULER`)) {
@@ -16,4 +22,3 @@ const popConfirmation = () => {
         window.location.href = "index.html";
     }
 };
-
