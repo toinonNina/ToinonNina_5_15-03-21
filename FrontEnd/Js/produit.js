@@ -24,57 +24,33 @@ var productSelection = async() => {
         `;
             //Gestion du panier
             // récupération des données sélectionnées par l'utilisateur et envoie du panier
+            const idColors = document.querySelector("#colors"); //selection de les options du formulaire
+            const btn = document.querySelector('.myBtn'); // sélection du bouton ajouter l'article au panier
 
-            //selection de les options du formulaires
-            const idColors = document.querySelector("#colors");
-
-            // sélection du bouton ajouter l'article au panier
-            const btn = document.querySelector('.myBtn');
-
-            // écouter le bouton et envoyer le panier 
-            btn.onclick = function(event) {
+            btn.onclick = function(event) { // écouter le bouton et envoyer le panier 
                 event.preventDefault();
                 event.stopPropagation();
-                //mettre le choix de l'utilisateur dans une variable
-
                 const choixColors = idColors.value;
-
                 var productObjet = {
+                    //mettre le choix de l'utilisateur dans une variable
                     id: myProduct._id,
                     name: myProduct.name,
                     option_product: choixColors,
                     price: myProduct.price / 100,
                     imageUrl: myProduct.imageUrl,
-                    quantity: 1,
+                    quantity: 0,
+
                 };
+                cartNumbers(productObjet);
+                totalCost(productObjet);
+                popConfirmation();
 
-                //déclaration de la variable dans laquelle on met les key et les values qui sont dans le local storage
-                let showproductLocalStorage = JSON.parse(localStorage.getItem('product'));
-                //json.parse pour convertir les données au format json qui sont dans le localStorage en objet Javascript
-
-                const addProducLocalStorage = () => {
-
-                    //ajout dans le tableau de l'objet avec les value choisi par l'utilisateur
-                    showproductLocalStorage.push(productObjet);
-                    // tranforme en JSON et l'envoye dans la clé product du localStorage
-                    localStorage.setItem("product", JSON.stringify(showproductLocalStorage));
-                };
-                //s'il y a deja des prduits enregistré dans le local storage
-                if (showproductLocalStorage) {
-                    addProducLocalStorage();
-
-                    popConfirmation();
-                }
-                // s'il n'y a pas de produit d'enregistré dans le local storage
-                else {
-                    showproductLocalStorage = [];
-                    addProducLocalStorage();
-
-                    popConfirmation();
-                }
 
             };
+
+
         });
     });
 };
 productSelection();
+onloadCartNumbers();

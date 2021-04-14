@@ -89,7 +89,7 @@ h1 {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px 20px 0 0;
 }
 
 .card-product {
@@ -281,12 +281,6 @@ footer li {
     }
 }
 
-@media (min-width: 769px) {
-    .th-img {
-        width: 250px;
-    }
-}
-
 @media (min-width:768px) {
     .table {
         width: 80%;
@@ -296,5 +290,8 @@ footer li {
     }
     .counter {
         flex-direction: row;
+    }
+    .th-img {
+        width: 250px;
     }
 }
