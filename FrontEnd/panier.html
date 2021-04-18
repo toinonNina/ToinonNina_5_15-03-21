@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/530869a928.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/FrontEnd/css/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
 </head>
 
@@ -28,7 +28,7 @@
                         <a class="nav-link" href="index.html">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="link-panier" href="panier.html"><i class="fas fa-shopping-basket"> <span class="spannumber"> 0</span></i></a>
+                        <a class="link-panier" href="panier.html"><i class="fas fa-shopping-basket"> <span id="spannumber"> 0</span></i></a>
                     </li>
                 </ul>
             </div>
@@ -54,12 +54,11 @@
                     </tbody>
                     <tfoot>
                         <tr>
+                            <th colspan=2 class="titre-panier">Total</th>
+
+
+                            <th class="sous_Total titre-panier ">/</th>
                             <th class="vide_panier"><button class="btn btn-primary allDelete" title="Vider le panier"><i class="fas fa-trash-alt"></i></button></button>
-                                <th colspan=2 class="titre-panier">Total</th>
-
-
-                                <th class="sous_Total titre-panier ">/</th>
-
                             </th>
                         </tr>
                     </tfoot>

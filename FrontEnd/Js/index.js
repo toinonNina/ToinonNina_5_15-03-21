@@ -1,10 +1,12 @@
 var teddies;
 const results = document.getElementById("results");
+
 // récupérer les données de l'API avec La promesse Fetch
 const fetchTeddies = async() => {
     teddies = await fetch(
         url
     ).then(response => response.json());
+    console.log(teddies);
 };
 // intégrer les information dans le HTML et inclure le lien pour récupéré l'id du produit dans l'Url qui correspondra bien a la page du produit
 const showTeddies = async() => {
@@ -28,4 +30,4 @@ const showTeddies = async() => {
 };
 
 showTeddies();
-onloadCartNumbers();
+AddNumber();
