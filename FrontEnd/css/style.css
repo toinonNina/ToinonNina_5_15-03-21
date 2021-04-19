@@ -198,10 +198,12 @@ input {
     border-radius: 5px;
 }
 
-.up,
-.down {
-    padding: 10px;
-    font-size: 20px;
+.quantite-gestion {
+    padding: 5px;
+    width: 30px;
+    background-color: #0d4d66;
+    border: none;
+    color: white;
 }
 
 .delete,
@@ -216,6 +218,13 @@ input {
 
 tr {
     border-top: 2px solid #dee2e6;
+}
+
+.commande {
+    margin: 15px auto auto auto;
+    display: flex;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 footer {
@@ -272,6 +281,20 @@ footer li {
     }
     .product-img {
         border-radius: 20px 20px 0 0;
+    }
+    .quantite-gestion {
+        display: flex;
+        padding: 5px 10px;
+        width: 30px;
+        background-color: #0d4d66;
+        border: none;
+        color: white;
+    }
+    .quantity-gestion button {
+        margin: auto;
+    }
+    .quantity-gestion {
+        text-align: center;
     }
 }
 

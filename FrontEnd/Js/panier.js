@@ -11,12 +11,12 @@ function productBasket() {
     // si le LocalStorage  n'est pas vide l'afficher 
     if (localStorage.getItem('product') !== null) {
 
-        let showProductBasket = JSON.parse(localStorage.getItem('product'));
+        let items = JSON.parse(localStorage.getItem('product'));
         let total = 0;
         //initialisation du total à 0
         let html = "";
         // Affichage des articles + prix + quantité +  selection de couleur + button de supression 
-        showProductBasket.forEach((product) => {
+        items.forEach((product, index) => {
 
             html += `
             <tr >
@@ -37,7 +37,6 @@ function productBasket() {
 
 
         });
-
     }
 
     // si le LocalStorage est par contre vide, afficher que le panier est vide
