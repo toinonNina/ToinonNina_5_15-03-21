@@ -172,6 +172,12 @@ td {
     text-align: center;
 }
 
+.titreformulaire {
+    font-size: 15px;
+    text-align: center;
+    margin: 55px 0 0 0;
+}
+
 h2 {
     font-weight: bold;
     color: #0d4d66;
@@ -220,6 +226,11 @@ tr {
     border-top: 2px solid #dee2e6;
 }
 
+.formulairecentrer {
+    width: 80%;
+    margin: 55px auto auto auto;
+}
+
 .commande {
     margin: 15px auto auto auto;
     display: flex;
@@ -260,6 +271,10 @@ footer li {
 .icon {
     font-size: 1.5em;
     color: white;
+}
+
+.btn-primary {
+    background-color: #08222c;
 }
 
 

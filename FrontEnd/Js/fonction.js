@@ -54,3 +54,66 @@ function AddNumber() {
         numberArticle.innerHTML = number;
     }
 }
+
+function AddForm() {
+    const form = document.querySelector("#formulaire");
+    form.innerHTML = `
+    <h2 class ="titreNom titreformulaire">Formulaire de commande</h2>
+    
+    <form class="formulairecentrer">
+    <div class="form-row ">
+        <div class="col-md-4 mb-3">
+            <label for="prenom">Prénom</label>
+            <input type="text" class="form-control" id="prenom" placeholder="First name" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" placeholder="Last name" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="email">Email</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="test">@</span>
+                </div>
+                <input type="text" class="form-control" id="email" placeholder="Username" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+        </div>
+        <div class="col-md-4 mb-2">
+            <label for="ville">Ville</label>
+            <input type="text" class="form-control" id="ville" placeholder="City" required>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="postal">Code Postal</label>
+            <input type="text" class="form-control" id="postal" placeholder="State" required>
+        </div>
+    </div>
+    
+    <p class="btn btn-primary commande">Passer Commande</p>
+  </form>`;
+}
+//type="submit"
+let product_Id = [];
+// gestion du formulaire
+
+const regExControlName = (value) => {
+    return /^[A-Za-z-àâäéèêëïîôöùûüç]{2,15}$/.test(value);
+};
+const regExControlPostal = (value) => {
+    return /^[0-9]{5}$/.test(value);
+};
+const regExControlEmail = (value) => {
+    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value);
+};
+const regExControlAdress = (value) => {
+    return /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{5,60}$/.test(value);
+};
+const regExControlCity = (value) => {
+    return /^[A-Za-z-àâäéèêëïîôöùûüç]{5,50}$/.test(value);
+};
