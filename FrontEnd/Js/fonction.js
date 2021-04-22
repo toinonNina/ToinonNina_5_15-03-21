@@ -43,12 +43,13 @@ function deleteAll() {
 // Affichage quantité du panier dans le menu de navigation de chaque page. 
 function AddNumber() {
     let numberArticle = document.getElementById("spannumber");
+
     let number = 0;
     // si le  localStorage n'est pas vide , on récupère  les données , et on boucle la somme de chaque quantité des données du localstorage
     if (localStorage.getItem('product') !== null) {
         let keynumber = JSON.parse(localStorage.getItem('product'));
         keynumber.forEach((products) => {
-            number = number + products.quantity;
+            number = number + products.quantity++;
         });
         // insertion dans le HTML
         numberArticle.innerHTML = number;

@@ -16,12 +16,26 @@ fetch(url + "/" + teddieId).then(function(response) {
                             <label for="option_product">Couleur :  </label>
                             <select name="colors" id="colors">
                            ${this.showOptionColor(myProduct.colors)}
-                            </select>                          
+                            </select>
+                            <label for="quantite_product">quantité : </label>
+                            <select name="quantite_product" id="quantite_product">
+                           
+                            </select>                            
                         </form>
                         <button class="btn btn-primary myBtn" >Ajouter au Panier</button>
                     </div>
                 </div>
         `;
+        const structurequantity = `
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>`;
+
+        const positionquantity = document.querySelector("#quantite_product");
+        positionquantity.innerHTML = structurequantity;
+        //quantité dans une variable 
+
 
         // sélection du bouton ajouter l'article au panier
         const btn = document.querySelector('.myBtn');
@@ -37,21 +51,25 @@ fetch(url + "/" + teddieId).then(function(response) {
         };
     });
 });
+//quantité
 
 
 function addItemCart(item) {
 
     // variable
     let showproductLocalStorage = [];
+    positionquantity = document.querySelector("#quantite_product");
     const idColors = document.querySelector("#colors");
     const choixColors = idColors.value;
+    const choicequantity = positionquantity.value;
+    console.log(choicequantity);
     // stockage des données dont j'aurai besoin dans le localStorage dans un objet
     let productObjet = {
         _id: item._id,
         imageUrl: item.imageUrl,
         name: item.name,
         price: item.price,
-        quantity: 1,
+        quantity: choicequantity,
         selectColors: choixColors,
     };
     let otherItem = true;

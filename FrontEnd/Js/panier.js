@@ -132,7 +132,7 @@ if (localStorage.getItem('product') !== null) {
                 return true;
             } else {
                 alert("verifier le champs adresse");
-                console.log("j'en ai marre");
+
                 return false;
 
             }
@@ -153,8 +153,6 @@ if (localStorage.getItem('product') !== null) {
             products,
             contact,
         });
-        console.log(dataSubmit);
-        console.log("dataSubmit");
         // envoie de l'objet dans le server
         postOrder(dataSubmit);
 

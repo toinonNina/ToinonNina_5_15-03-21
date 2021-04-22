@@ -204,14 +204,6 @@ input {
     border-radius: 5px;
 }
 
-.quantite-gestion {
-    padding: 5px;
-    width: 30px;
-    background-color: #0d4d66;
-    border: none;
-    color: white;
-}
-
 .delete,
 .vide_panier {
     text-align: center;
@@ -307,20 +299,6 @@ footer li {
     }
     .product-img {
         border-radius: 20px 20px 0 0;
-    }
-    .quantite-gestion {
-        display: flex;
-        padding: 5px 10px;
-        width: 30px;
-        background-color: #0d4d66;
-        border: none;
-        color: white;
-    }
-    .quantity-gestion button {
-        margin: auto;
-    }
-    .quantity-gestion {
-        text-align: center;
     }
 }
 
