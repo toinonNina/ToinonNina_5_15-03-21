@@ -16,10 +16,9 @@ fetch(url + "/" + teddieId).then(function(response) {
                             <label for="option_product">Couleur :  </label>
                             <select name="colors" id="colors">
                            ${this.showOptionColor(myProduct.colors)}
-                            </select>
-                           
+                            </select>                          
                         </form>
-                        <button class="btn btn-primary myBtn">Ajouter au Panier</button>
+                        <button class="btn btn-primary myBtn" >Ajouter au Panier</button>
                     </div>
                 </div>
         `;
@@ -31,7 +30,7 @@ fetch(url + "/" + teddieId).then(function(response) {
         btn.onclick = function(event) {
             event.preventDefault();
             event.stopPropagation();
-
+            //appel de la fonction pour ajouter les produits dans le localStorage
             addItemCart(myProduct);
 
 
@@ -72,10 +71,12 @@ function addItemCart(item) {
                 otherItem = false;
             }
         });
+        //si otherItem est trus on push les donnée dans le tableau et on enregistre dans le localStorage
         if (otherItem) showproductLocalStorage.push(productObjet);
         localStorage.setItem('product', JSON.stringify(showproductLocalStorage));
     }
-
+    // fonction qui active une popup pour permettre a l'utilisation de naviguer soit au panier soit de retourner a la page accueil
     popConfirmation();
 }
+//fonction qui affiche dans le span la quantité d'article
 AddNumber();

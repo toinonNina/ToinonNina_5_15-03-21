@@ -275,6 +275,17 @@ footer li {
 
 .btn-primary {
     background-color: #08222c;
+    border: none;
+}
+
+.confirmhead {
+    background-color: #0d4d66;
+    color: white;
+    border-radius: 20px 20px 0 0!important;
+}
+
+.cardsize {
+    width: 80%;
 }
 
 

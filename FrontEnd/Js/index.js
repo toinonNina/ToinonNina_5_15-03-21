@@ -30,4 +30,5 @@ const showTeddies = async() => {
 };
 
 showTeddies();
+//function qui affichae dans le span la quantité d'article
 AddNumber();

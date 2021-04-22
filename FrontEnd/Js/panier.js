@@ -3,7 +3,7 @@
 const showBasket = document.querySelector("#monpanier");
 const showBasketnotempty = document.querySelector("#contenue");
 let items = JSON.parse(localStorage.getItem('product'));
-
+let total = 0;
 
 
 // Contenu du panier
@@ -12,7 +12,7 @@ function productBasket() {
     if (localStorage.getItem('product') !== null) {
 
 
-        let total = 0;
+
         //initialisation du total à 0
         let html = "";
         // Affichage des articles + prix + quantité +  selection de couleur + button de supression 
@@ -69,29 +69,22 @@ if (localStorage.getItem('product') !== null) {
         // objet qui récupère les values du formulaires une fois remplus
 
         event.preventDefault;
-        let formulaire = {
+        let contact = {
             firstName: document.querySelector("#prenom").value,
             lastName: document.querySelector("#nom").value,
-            adress: document.querySelector("#inputAddress").value,
+            address: document.querySelector("#inputAddress").value,
             city: document.querySelector("#ville").value,
-            postal: document.querySelector("#postal").value,
             email: document.querySelector("#email").value,
         };
         let productLocal = JSON.parse(localStorage.getItem('product'));
         // parcourir tableau du localstorage pour lire et récupérer chaque id
         productLocal.forEach(dataId => {
-            product_Id.push(dataId._id);
+            products.push(dataId._id);
         });
         //controle formulaire avant envoie dans le localstorage
         // si le controle est true alors setItem dans le localstorage. sinon alert remplir le formulaires
-        if (firstNameControle() && lastNameControle() && postalControle() && emailControle() && adressControle() && cityControle()) {
-            localStorage.setItem("formulaire", JSON.stringify(formulaire));
-            const dataSubmit = {
-                product_Id,
-                formulaire
-            };
-            console.log(dataSubmit);
-            console.log("dataSubmit");
+        if (firstNameControle() && lastNameControle() && emailControle() && adressControle() && cityControle()) {
+            localStorage.setItem("formulaire", JSON.stringify(contact));
 
         } else {
             alert("remplir le formulaire");
@@ -103,7 +96,7 @@ if (localStorage.getItem('product') !== null) {
 
         //controle des value formulaire
         function firstNameControle() {
-            const firstName = formulaire.firstName;
+            const firstName = contact.firstName;
             if (regExControlName(firstName)) {
                 return true;
             } else {
@@ -113,7 +106,7 @@ if (localStorage.getItem('product') !== null) {
         }
 
         function lastNameControle() {
-            const lastName = formulaire.lastName;
+            const lastName = contact.lastName;
             if (regExControlName(lastName)) {
                 return true;
             } else {
@@ -122,18 +115,9 @@ if (localStorage.getItem('product') !== null) {
             }
         }
 
-        function postalControle() {
-            const postal = formulaire.postal;
-            if (regExControlPostal(postal)) {
-                return true;
-            } else {
-                alert("Le champs code Postal doit être composé de 5 chiffres");
-                return false;
-            }
-        }
 
         function emailControle() {
-            const email = formulaire.email;
+            const email = contact.email;
             if (regExControlEmail(email)) {
                 return true;
             } else {
@@ -143,7 +127,7 @@ if (localStorage.getItem('product') !== null) {
         }
 
         function adressControle() {
-            const adress = formulaire.adress;
+            const adress = contact.adress;
             if (regExControlAdress(adress)) {
                 return true;
             } else {
@@ -155,7 +139,7 @@ if (localStorage.getItem('product') !== null) {
         }
 
         function cityControle() {
-            const city = formulaire.city;
+            const city = contact.city;
             if (regExControlCity(city)) {
                 return true;
             } else {
@@ -164,8 +148,42 @@ if (localStorage.getItem('product') !== null) {
             }
         }
 
-
         // variable qui réunis les données a envoyé au serveur, les id des produits présent dans le panier, et les donnnées récupérer dans le localStorage
+        const dataSubmit = JSON.stringify({
+            products,
+            contact,
+        });
+        console.log(dataSubmit);
+        console.log("dataSubmit");
+        // envoie de l'objet dans le server
+        postOrder(dataSubmit);
+
 
     });
 };
+
+function postOrder(dataSubmit) {
+    // on utilise fetch qui retourne une promesse
+    fetch("http://localhost:3000/api/teddies/order", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: dataSubmit
+        }).then(response => { // premier then qui reçoit la réponse en objet qui doit être convertie en json
+
+            return response.json();
+
+        }).then(result => { // deuxième then qui qui traite les données json
+            localStorage.setItem('contact', JSON.stringify(result.contact));
+            localStorage.setItem('orderId', JSON.stringify(result.orderId));
+            localStorage.setItem('total', JSON.stringify(total));
+            localStorage.removeItem('product');
+            localStorage.removeItem('formulaire');
+            window.location.replace("confirmation.html");
+        }) //fonction catch pour traité le cas ou la promesse est rejeté 
+        .catch((error) => {
+            //displayError();
+            console.log(error);
+        });
+}

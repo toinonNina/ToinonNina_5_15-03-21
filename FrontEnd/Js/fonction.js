@@ -89,17 +89,14 @@ function AddForm() {
             <label for="ville">Ville</label>
             <input type="text" class="form-control" id="ville" placeholder="City" required>
         </div>
-        <div class="col-md-3 mb-3">
-            <label for="postal">Code Postal</label>
-            <input type="text" class="form-control" id="postal" placeholder="State" required>
-        </div>
+        
     </div>
     
     <p class="btn btn-primary commande">Passer Commande</p>
   </form>`;
 }
 //type="submit"
-let product_Id = [];
+let products = [];
 // gestion du formulaire
 
 const regExControlName = (value) => {
@@ -115,5 +112,5 @@ const regExControlAdress = (value) => {
     return /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{5,60}$/.test(value);
 };
 const regExControlCity = (value) => {
-    return /^[A-Za-z-àâäéèêëïîôöùûüç]{5,50}$/.test(value);
+    return /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{5,50}$/.test(value);
 };
