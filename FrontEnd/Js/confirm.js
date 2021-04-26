@@ -4,8 +4,9 @@ const orderId = JSON.parse(localStorage.getItem("orderId"));
 const total = JSON.parse(localStorage.getItem('total'));
 
 // insertion HTML avec donnée récupéré pour confirmation de commande
-function showConfirmation() {
-    confirm = `
+function showConfirmation(dataconfirm) {
+    if (dataconfirm) {
+        confirm = `
 <div class="card text-center cardsize">
   <div class="card-header confirmhead">
     Merci ${contact.firstName} de votre commande
@@ -18,9 +19,12 @@ function showConfirmation() {
 </div>
 `;
 
-    document.querySelector("#commande").innerHTML = confirm;
+        dataconfirm.innerHTML = confirm;
+    } else {
+        console.log("erreur de chargement de page");
+    }
 }
-showConfirmation();
+showConfirmation(document.querySelector("#commande"));
 
 //clear du localstorage dans sa totalité.
 localStorage.removeItem('contact');

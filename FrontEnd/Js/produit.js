@@ -26,16 +26,9 @@ fetch(url + "/" + teddieId).then(function(response) {
                     </div>
                 </div>
         `;
-        const structurequantity = `
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>`;
 
-        const positionquantity = document.querySelector("#quantite_product");
-        positionquantity.innerHTML = structurequantity;
-        //quantité dans une variable 
-
+        //affiche la selection de quantité
+        showStructureQuantity(document.querySelector("#quantite_product"));
 
         // sélection du bouton ajouter l'article au panier
         const btn = document.querySelector('.myBtn');
@@ -46,12 +39,12 @@ fetch(url + "/" + teddieId).then(function(response) {
             event.stopPropagation();
             //appel de la fonction pour ajouter les produits dans le localStorage
             addItemCart(myProduct);
-
-
         };
-    });
+    }).catch((error) => {
+        console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+    });;
 });
-//quantité
+
 
 
 function addItemCart(item) {
@@ -85,7 +78,7 @@ function addItemCart(item) {
         showproductLocalStorage.forEach((product) => {
             //si l'id et la color sont égale on incrémente la quantité au lieu d'affiché une nouvelle ligne dans le tableau
             if (item._id === product._id && choixColors === product.selectColors) {
-                product.quantity++;
+                product.quantity = parseInt(product.quantity) + parseInt(choicequantity);
                 otherItem = false;
             }
         });
@@ -97,4 +90,4 @@ function addItemCart(item) {
     popConfirmation();
 }
 //fonction qui affiche dans le span la quantité d'article
-AddNumber();
+showQuantity(localStorage.getItem('product'));

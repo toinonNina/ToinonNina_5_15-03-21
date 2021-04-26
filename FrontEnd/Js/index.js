@@ -1,21 +1,24 @@
 var teddies;
-const results = document.getElementById("results");
 
 // récupérer les données de l'API avec La promesse Fetch
-const fetchTeddies = async() => {
+const fetchTeddies = async(apiurl) => {
     teddies = await fetch(
-        url
-    ).then(response => response.json());
+            apiurl
+        ).then(response => { return response.json(); })
+        .catch((error) => {
+            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+        });
+
 };
 // intégrer les information dans le HTML et inclure le lien pour récupéré l'id du produit dans l'Url qui correspondra bien a la page du produit
-const showTeddies = async() => {
-    await fetchTeddies();
+const showTeddies = async(results) => {
+    await fetchTeddies(url);
+    if (results) {
+        results.innerHTML = (
 
-    results.innerHTML = (
-
-        teddies
-        .map(teddie => (
-            `<div class="card" style="width:18rem;">
+            teddies
+            .map(teddie => (
+                `<div class="card" style="width:18rem;">
                     <img class="card-img-top teddies-img" src="${teddie.imageUrl}" />
                     <div class="card-body">
                         <h2 class="card-title name">${teddie.name}</h2>
@@ -24,10 +27,13 @@ const showTeddies = async() => {
                     </div>
                 </div>
                 `
-        )).join('')
-    );
+            )).join('')
+        );
+    } else {
+        console.log("erreur de chargement de la page");
+    }
 };
 
-showTeddies();
+showTeddies(document.getElementById("results"));
 //function qui affichae dans le span la quantité d'article
-AddNumber();
+showQuantity(localStorage.getItem('product'));
