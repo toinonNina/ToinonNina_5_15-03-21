@@ -1,0 +1,330 @@
+body {
+    width: auto;
+    margin: 0;
+    font-size: 1em;
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(229, 237, 240);
+}
+
+a {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+
+header img {
+    width: 20%;
+    margin: auto;
+    display: block;
+}
+
+nav {
+    font-size: 1.5em;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #0d4d66;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+}
+
+.navbar {
+    color: white;
+}
+
+nav ul {
+    justify-content: space-around;
+    width: 80%;
+}
+
+.link-panier {
+    vertical-align: -webkit-baseline-middle;
+}
+
+nav li {
+    display: inline;
+    text-align: center;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.presentation {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#monproduits {
+    display: flex;
+}
+
+.card {
+    margin: 0 auto 10px auto;
+    border-radius: 20px;
+}
+
+.teddies-img {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+    border-radius: 20px 20px 0 0;
+}
+
+.product-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+.card-product {
+    margin-top: 140px;
+    display: flex;
+    border-radius: 20px 20px;
+    width: 41%;
+}
+
+.product-body {
+    height: 400px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    border-radius: 0 20px 20px 0;
+    background-color: white;
+}
+
+.description {
+    margin-bottom: 5rem;
+    font-size: 1.2em;
+}
+
+#colors {
+    margin-bottom: 50px;
+    width: 10em;
+    font-size: 1.1em;
+    ;
+    border-radius: 10px;
+}
+
+.colortitle {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.panier_vide {
+    text-align: center;
+    background-color: #0d4d66;
+    padding: 10px;
+    color: white;
+}
+
+.th-img {
+    width: 100%;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+    padding: 7px;
+}
+
+.table {
+    margin: auto;
+    border: 2px solid #dee2e6;
+    font-size: 15px;
+}
+
+thead {
+    background-color: #0d4d66;
+    color: white;
+}
+
+.table thead th {
+    width: 15%;
+}
+
+th {
+    border: 2px solid #dee2e6;
+}
+
+td {
+    border-top: 2px solid #dee2e6;
+    background-color: ghostwhite;
+}
+
+.titre-panier {
+    font-size: 15px;
+    text-align: center;
+}
+
+.titreformulaire {
+    font-size: 15px;
+    text-align: center;
+    margin: 55px 0 0 0;
+}
+
+h2 {
+    font-weight: bold;
+    color: #0d4d66;
+    font-size: 20px !important;
+}
+
+.counter {
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    appearance: none;
+    border: 0;
+    background: white;
+    text-align: center;
+    width: 42px;
+    line-height: 24px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.delete,
+.vide_panier {
+    text-align: center;
+}
+
+.btn-delete {
+    padding: 5px;
+    font-size: 15px;
+}
+
+tr {
+    border-top: 2px solid #dee2e6;
+}
+
+.formulairecentrer {
+    width: 80%;
+    margin: 55px auto auto auto;
+}
+
+.commande {
+    margin: 15px auto auto auto;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.alertspan {
+    color: red;
+    font-weight: 600;
+    text-align: center;
+}
+
+footer {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    background-color: #0d4d66;
+    margin-top: 140px;
+}
+
+footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-around;
+    width: 80%;
+    padding-left: 0px;
+    margin: auto;
+    color: white;
+}
+
+footer li {
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    margin: 10px 0;
+}
+
+.copyright {
+    color: white;
+    font-size: 12px;
+}
+
+.icon {
+    font-size: 1.5em;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #08222c;
+    border: none;
+}
+
+.confirmhead {
+    background-color: #0d4d66;
+    color: white;
+    border-radius: 20px 20px 0 0!important;
+}
+
+.cardsize {
+    width: 80%;
+}
+
+
+/*----------------------------------------------------------------*/
+
+@media (min-width: 320px) and (max-width: 1000px) {
+    header img {
+        width: 50%;
+    }
+    .card-product {
+        margin: 90px auto auto auto;
+        flex-direction: column;
+        border-radius: 20px 20px;
+        width: 80%;
+    }
+    .product-body {
+        margin: auto;
+        height: auto;
+    }
+    .product-img {
+        border-radius: 20px 20px 0 0;
+    }
+}
+
+@media (min-width: 426px) and (max-width:768px) {
+    .th-img {
+        width: 60%;
+    }
+}
+
+@media (min-width:768px) {
+    .table {
+        width: 80%;
+    }
+    .titre-panier {
+        font-size: 18px;
+    }
+    .counter {
+        flex-direction: row;
+    }
+    .th-img {
+        width: 250px;
+    }
+}
