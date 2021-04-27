@@ -89,21 +89,17 @@ h1 {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px 20px 0 0;
 }
 
 .card-product {
     margin-top: 140px;
     display: flex;
-    flex-direction: row;
     border-radius: 20px 20px;
     width: 41%;
-    margin-left: 15%;
-    margin-right: 0;
 }
 
 .product-body {
-    flex: 1 0 auto;
     height: 400px;
     display: flex;
     width: 100%;
@@ -125,15 +121,16 @@ h1 {
     border-radius: 10px;
 }
 
+.colortitle {
+    font-weight: 400;
+    font-size: 16px;
+}
+
 .panier_vide {
     text-align: center;
     background-color: #0d4d66;
     padding: 10px;
     color: white;
-}
-
-.table {
-    border-collapse: separate;
 }
 
 .th-img {
@@ -143,12 +140,13 @@ h1 {
 .table td,
 .table th {
     vertical-align: middle;
+    padding: 7px;
 }
 
 .table {
     margin: auto;
-    width: 80%;
     border: 2px solid #dee2e6;
+    font-size: 15px;
 }
 
 thead {
@@ -156,17 +154,86 @@ thead {
     color: white;
 }
 
+.table thead th {
+    width: 15%;
+}
+
 th {
     border: 2px solid #dee2e6;
 }
 
 td {
-    border: 2px solid #dee2e6;
+    border-top: 2px solid #dee2e6;
     background-color: ghostwhite;
 }
 
+.titre-panier {
+    font-size: 15px;
+    text-align: center;
+}
+
+.titreformulaire {
+    font-size: 15px;
+    text-align: center;
+    margin: 55px 0 0 0;
+}
+
+h2 {
+    font-weight: bold;
+    color: #0d4d66;
+    font-size: 20px !important;
+}
+
+.counter {
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    appearance: none;
+    border: 0;
+    background: white;
+    text-align: center;
+    width: 42px;
+    line-height: 24px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.delete,
+.vide_panier {
+    text-align: center;
+}
+
+.btn-delete {
+    padding: 5px;
+    font-size: 15px;
+}
+
 tr {
-    border: 2px solid #dee2e6;
+    border-top: 2px solid #dee2e6;
+}
+
+.formulairecentrer {
+    width: 80%;
+    margin: 55px auto auto auto;
+}
+
+.commande {
+    margin: 15px auto auto auto;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.alertspan {
+    color: red;
+    font-weight: 600;
+    text-align: center;
 }
 
 footer {
@@ -204,6 +271,21 @@ footer li {
     color: white;
 }
 
+.btn-primary {
+    background-color: #08222c;
+    border: none;
+}
+
+.confirmhead {
+    background-color: #0d4d66;
+    color: white;
+    border-radius: 20px 20px 0 0!important;
+}
+
+.cardsize {
+    width: 80%;
+}
+
 
 /*----------------------------------------------------------------*/
 
@@ -232,7 +314,16 @@ footer li {
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width:768px) {
+    .table {
+        width: 80%;
+    }
+    .titre-panier {
+        font-size: 18px;
+    }
+    .counter {
+        flex-direction: row;
+    }
     .th-img {
         width: 250px;
     }
