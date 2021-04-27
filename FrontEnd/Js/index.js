@@ -10,6 +10,7 @@ const fetchTeddies = async(apiurl) => {
         });
 
 };
+
 // intégrer les information dans le HTML et inclure le lien pour récupéré l'id du produit dans l'Url qui correspondra bien a la page du produit
 const showTeddies = async(results) => {
     await fetchTeddies(url);
@@ -19,7 +20,7 @@ const showTeddies = async(results) => {
             teddies
             .map(teddie => (
                 `<div class="card" style="width:18rem;">
-                    <img class="card-img-top teddies-img" src="${teddie.imageUrl}" />
+                    <img class="card-img-top teddies-img" src="${teddie.imageUrl}" alt ="${teddie.name}" />
                     <div class="card-body">
                         <h2 class="card-title name">${teddie.name}</h2>
                         <p class="card-text price">${teddie.price / 100} €</p> 
@@ -32,6 +33,8 @@ const showTeddies = async(results) => {
     } else {
         console.log("erreur de chargement de la page");
     }
+
+
 };
 
 showTeddies(document.getElementById("results"));
