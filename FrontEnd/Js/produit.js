@@ -5,28 +5,27 @@ fetch(url + "/" + teddieId).then(function(response) {
         myProduct = data;
 
         //on y inclus le html pour l'afficher en y incluant la fonction pour les options
-        monproduit.innerHTML =
+        myProducts.innerHTML =
             `<div class="card card-product">
-                    <img class="card-img-top product-img" src="${myProduct.imageUrl}" />
+                    <img class="card-img-top product-img" src="${myProduct.imageUrl}" alt="${myProduct.name}" />
                     <div class="card-body product-body">
                         <h2 class="card-title name">${myProduct.name}</h2>
                         <p class="card-text price">${myProduct.price / 100} €</p>
                         <p class="card-text description">${myProduct.description}</p>
                         <form>
-                            <label for="option_product">Couleur :  </label>
+                            <label for="option_product" aria-label="option de couleur">Couleur :  </label>
                             <select name="colors" id="colors">
                            ${this.showOptionColor(myProduct.colors)}
                             </select>
-                            <label for="quantite_product">quantité : </label>
+                            <label for="quantite_product" aria-label="option quantité">quantité : </label>
                             <select name="quantite_product" id="quantite_product">
-                           
                             </select>                            
                         </form>
                         <button class="btn btn-primary myBtn" >Ajouter au Panier</button>
                     </div>
                 </div>
         `;
-
+        console.log(url + "/" + teddieId);
         //affiche la selection de quantité
         showStructureQuantity(document.querySelector("#quantite_product"));
 

@@ -1,11 +1,11 @@
 const url = "http://localhost:3000/api/teddies";
-
-
+let products = [];
+/* _________________________________________ fiche produit___________________________________________________*/
 // création variable qui récupère l'id choisis dans la selection produit dans l'index
 const params = new URLSearchParams(window.location.search);
 var teddieId = params.get("id");
 var myProduct;
-
+/* _________________________________________ gestion couleur___________________________________________________*/
 // fonction pour afficher les option de couleur en liste.
 function showOptionColor(colors) {
     let optionColor = '';
@@ -14,8 +14,8 @@ function showOptionColor(colors) {
     }
     return optionColor;
 };
-
-//fonction fenètre popup 
+/* _________________________________________ confirmation mis dans le panier___________________________________________________*/
+//fonction fenètre popup de confirmation de mise dans le panier
 const popConfirmation = () => {
     if (window.confirm(`${myProduct.name} a bien été ajouté au panier consultez le panier OK où revenir à l'accueil ANNULER`)) {
         window.location.href = "panier.html";
@@ -23,7 +23,7 @@ const popConfirmation = () => {
         window.location.href = "index.html";
     }
 };
-
+/* _________________________________________ Vider le panier___________________________________________________*/
 // vider le panier avec clear localStorage
 const btnDeleteAllProduct = document.querySelector('.allDelete');
 // ecoute bouton supprimé pour supprimer produit tableau
@@ -36,6 +36,7 @@ function deleteAll(deletebutton) {
         window.location.reload();
     };
 }
+/* _________________________________________ quantité produit___________________________________________________*/
 // Affichage quantité du panier dans le menu de navigation de chaque page. 
 function showQuantity(datas) {
     let numberArticle = document.getElementById("spannumber");
@@ -50,9 +51,9 @@ function showQuantity(datas) {
         // insertion dans le HTML
 
     }
-    numberArticle.innerHTML = number;
+    numberArticle.innerHTML = number + " produits";
 }
-
+// injection html quantité
 function showStructureQuantity(positionQuantity) {
     if (positionQuantity) {
         const structurequantity = `
@@ -64,8 +65,9 @@ function showStructureQuantity(positionQuantity) {
     } else {
         console.log(error);
     }
-}
-
+} /* _________________________________________ FIN quantité produit___________________________________________________*/
+/* _________________________________________ gestion du formulaire___________________________________________________*/
+// injection html
 function AddForm(form) {
     if (form) {
         form.innerHTML = `
@@ -74,17 +76,17 @@ function AddForm(form) {
     <form class="formulairecentrer">
     <div class="form-row ">
         <div class="col-md-4 mb-3">
-            <label for="prenom">Prénom</label>
+            <label for="prenom" aria-label="prenom">Prénom</label>
             <input type="text" class="form-control" id="prenom" placeholder="Prénom" required>
             <div id="alerteprenom" class ="alertspan"></div>
         </div>
         <div class="col-md-4 mb-3">
-            <label for="nom">Nom</label>
+            <label for="nom" aria-label="nom">Nom</label>
             <input type="text" class="form-control" id="nom" placeholder="Nom" required>
             <div id="alertenom" class ="alertspan"></div>
         </div>
         <div class="col-md-4 mb-3">
-            <label for="email">Email</label>
+            <label for="email" aria-label="email">Email</label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="test">@</span>
@@ -96,12 +98,12 @@ function AddForm(form) {
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputAddress">Address</label>
+            <label for="inputAddress" aria-label="adresse">Address</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="adresse" required>
            <div id="alerteadress" class ="alertspan"></div>
         </div>
         <div class="col-md-4 mb-2">
-            <label for="ville">Ville</label>
+            <label for="ville" aria-label="postal">Ville</label>
             <input type="text" class="form-control" id="ville" placeholder="Code postal et ville" required>
             <div id="alerteville" class ="alertspan"></div>
         </div>
@@ -113,9 +115,7 @@ function AddForm(form) {
     } else { console.log("erreur de chargement"); }
 }
 
-let products = [];
-
-// gestion du formulaire
+// formule regexp
 
 const regExControlName = (value) => {
     return /^[A-Za-z-àâäéèêëïîôöùûüç]{2,15}$/.test(value);
@@ -130,7 +130,7 @@ const regExControlAdress = (value) => {
     return /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{5,60}$/.test(value);
 };
 const regExControlCity = (value) => {
-    return /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{5,50}$/.test(value);
+    return /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{5,20}$/.test(value);
 };
 
 
@@ -155,7 +155,6 @@ function lastNameControle(regexLastName) {
         return false;
     }
 }
-
 
 function emailControle(regexEmail) {
 
@@ -191,3 +190,4 @@ function cityControle(regexCity) {
         return false;
     }
 }
+/* _________________________________________  FIN gestion du formulaire___________________________________________________*/

@@ -18,10 +18,10 @@ function productBasket(productls) {
             html += `
             <tr >
                 <td scope="row"><a href="produit.html?id=${product._id}">
-                    <img class="th-img" src="${product.imageUrl}"></a></td>
+                    <img class="th-img" src="${product.imageUrl}" alt="${product.name}"></a></td>
                 <td><h2 class ="titreNom panierh2 nametitre">${product.name}</h2><h3 class="colortitle"> ${product.selectColors}</h3></td>
                 <td><h2 class ="titreNom panierh2">${product.quantity}</h2></td>
-                <td><h4 class="titre-panier panierh4">${(product.price / 100) * product.quantity}  €</h4></td >
+                <td><h2 class="titre-panier panierh4">${(product.price / 100) * product.quantity}  €</h2></td >
                 
             </tr >
                 `;
