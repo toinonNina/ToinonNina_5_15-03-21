@@ -21,8 +21,7 @@ function productBasket(productls) {
                     <img class="th-img" src="${product.imageUrl}" alt="${product.name}"></a></td>
                 <td><h2 class ="titreNom panierh2 nametitre">${product.name}</h2><h3 class="colortitle"> ${product.selectColors}</h3></td>
                 <td><h2 class ="titreNom panierh2">${product.quantity}</h2></td>
-                <td><h2 class="titre-panier panierh4">${(product.price / 100) * product.quantity}  €</h2></td >
-                
+                <td><h2 class="titre-panier panierh4">${(product.price / 100) * product.quantity}  €</h2></td >               
             </tr >
                 `;
             document.querySelector("#contenue").innerHTML = html;
@@ -94,7 +93,7 @@ function showForm(formls) {
                     products,
                     contact,
                 });
-
+                console.log(dataSubmit);
                 // envoie de l'objet dans le server
                 postOrder(dataSubmit);
             };
