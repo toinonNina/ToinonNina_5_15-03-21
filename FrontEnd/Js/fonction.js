@@ -67,53 +67,7 @@ function showStructureQuantity(positionQuantity) {
     }
 } /* _________________________________________ FIN quantité produit___________________________________________________*/
 /* _________________________________________ gestion du formulaire___________________________________________________*/
-// injection html
-function AddForm(form) {
-    if (form) {
-        form.innerHTML = `
-    <h2 class ="titreNom titreformulaire">Formulaire de commande</h2>
-    
-    <form class="formulairecentrer">
-    <div class="form-row ">
-        <div class="col-md-4 mb-3">
-            <label for="prenom" aria-label="prenom">Prénom</label>
-            <input type="text" class="form-control" id="prenom" placeholder="Prénom" required>
-            <div id="alerteprenom" class ="alertspan"></div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="nom" aria-label="nom">Nom</label>
-            <input type="text" class="form-control" id="nom" placeholder="Nom" required>
-            <div id="alertenom" class ="alertspan"></div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="email" aria-label="email">Email</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="test">@</span>
-                </div>
-                <input type="text" class="form-control" id="email" placeholder="adresse Email" required>
-            </div>
-            <div id="alertemail" class ="alertspan"></div>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputAddress" aria-label="adresse">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="adresse" required>
-           <div id="alerteadress" class ="alertspan"></div>
-        </div>
-        <div class="col-md-4 mb-2">
-            <label for="ville" aria-label="postal">Ville</label>
-            <input type="text" class="form-control" id="ville" placeholder="Code postal et ville" required>
-            <div id="alerteville" class ="alertspan"></div>
-        </div>
-        
-    </div>
-    
-    <p class="btn-commande btn-primary commande">Passer Commande</p>
-  </form>`;
-    } else { console.log("erreur de chargement"); }
-}
+
 
 // formule regexp
 
@@ -123,15 +77,17 @@ const regExControlName = (value) => {
 const regExControlPostal = (value) => {
     return /^[0-9]{5}$/.test(value);
 };
-const regExControlEmail = (value) => {
-    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value);
-};
 const regExControlAdress = (value) => {
-    return /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{5,60}$/.test(value);
+    return /^[a-zA-Z0-9\s-,áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{5,60}$/.test(value);
 };
 const regExControlCity = (value) => {
-    return /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]{5,20}$/.test(value);
+    return /^[a-zA-Z0-9\s-,áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{5,20}$/.test(value);
 };
+const regExControlEmail = (value) => {
+    return /^[\w-.]+@([\w-]+.)+[\w-]{2,}$/g.test(value);
+
+};
+
 
 
 //controle des value formulaire
@@ -140,7 +96,7 @@ function firstNameControle(regexName) {
         return true;
     } else {
         const alertFirstName = document.querySelector("#alerteprenom");
-        alertFirstName.innerHTML = "Le champs du formulaire doit contenir que des lettres \n Il doit contenir un minimum de 2 caractères jusqu'a 15 caractères";
+        alertFirstName.innerHTML = "Le champs du formulaire doit contenir que des lettres \n Il doit contenir un minimum de 2 caractères jusqu'à 15 caractères";
         return false;
     }
 }
@@ -151,7 +107,7 @@ function lastNameControle(regexLastName) {
         return true;
     } else {
         const alertLastName = document.querySelector("#alertenom");
-        alertLastName.innerHTML = "Le champs du formulaire doit contenir que des lettres \n Il doit contenir un minimum de 2 caractères jusqu'a 15 caractères";
+        alertLastName.innerHTML = "Le champs du formulaire doit contenir que des lettres \n Il doit contenir un minimum de 2 caractères jusqu'à 15 caractères";
         return false;
     }
 }
@@ -173,7 +129,7 @@ function adressControle(regexAdress) {
         return true;
     } else {
         const alertAdress = document.querySelector("#alerteadress");
-        alertAdress.innerHTML = "verifier le champs adresse";
+        alertAdress.innerHTML = "vérifier le champs adresse";
 
         return false;
 
@@ -186,7 +142,7 @@ function cityControle(regexCity) {
         return true;
     } else {
         const alertCity = document.querySelector("#alerteville");
-        alertCity.innerHTML = "verifier le champs de la ville ";
+        alertCity.innerHTML = "vérifier le champs de la ville ";
         return false;
     }
 }
