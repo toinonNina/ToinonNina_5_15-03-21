@@ -1,12 +1,13 @@
 //fonction qui récupère bien les donnée API du produit selectionné.
 
-fetch(url + "/" + teddieId).then(function(response) {
-    response.json().then(function(data) {
-        myProduct = data;
+const fetchProduct = () => {
+    fetch(url + "/" + teddieId).then(response => {
+        response.json().then((data => {
+            myProduct = data;
 
-        //on y inclus le html pour l'afficher en y incluant la fonction pour les options
-        myProducts.innerHTML =
-            `<div class="card card-product">
+            //on y inclus le html pour l'afficher en y incluant la fonction pour les options
+            myProducts.innerHTML =
+                `<div class="card card-product">
                     <img class="card-img-top product-img" src="${myProduct.imageUrl}" alt="${myProduct.name}" />
                     <div class="card-body product-body">
                         <h2 class="card-title name">${myProduct.name}</h2>
@@ -25,24 +26,26 @@ fetch(url + "/" + teddieId).then(function(response) {
                     </div>
                 </div>
         `;
-        console.log(url + "/" + teddieId);
-        //affiche la selection de quantité
-        showStructureQuantity(document.querySelector("#quantite_product"));
 
-        // sélection du bouton ajouter l'article au panier
-        const btn = document.querySelector('.myBtn');
+            //affiche la selection de quantité
+            showStructureQuantity(document.querySelector("#quantite_product"));
 
-        // écouter le bouton et envoyer le panier 
-        btn.onclick = function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            //appel de la fonction pour ajouter les produits dans le localStorage
-            addItemCart(myProduct);
-        };
-    }).catch((error) => {
-        console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
-    });;
-});
+            // sélection du bouton ajouter l'article au panier
+            const btn = document.querySelector('.myBtn');
+
+            // écouter le bouton et envoyer le panier 
+            btn.onclick = (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                //appel de la fonction pour ajouter les produits dans le localStorage
+                addItemCart(myProduct);
+            };
+        })).catch((error) => {
+            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+        });;
+    });
+};
+fetchProduct();
 
 
 
@@ -54,7 +57,7 @@ function addItemCart(item) {
     const idColors = document.querySelector("#colors");
     const choixColors = idColors.value;
     const choicequantity = positionquantity.value;
-    console.log(choicequantity);
+
     // stockage des données dont j'aurai besoin dans le localStorage dans un objet
     let productObjet = {
         _id: item._id,

@@ -1,4 +1,4 @@
-var teddies;
+let teddies;
 
 // récupérer les données de l'API avec La promesse Fetch
 const fetchTeddies = async(apiurl) => {

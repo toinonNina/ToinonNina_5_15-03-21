@@ -30,7 +30,7 @@ function productBasket(productls) {
             const sousTotal = document.querySelector(".sous_Total");
             //insertion dans le HTML déja présent
             sousTotal.innerHTML = total + " €";
-            AddForm(document.querySelector("#formulaire"));
+
         });
     }
 
@@ -81,11 +81,11 @@ function showForm(formls) {
             const firstName = contact.firstName;
             const lastName = contact.lastName;
             const email = contact.email;
-            const adress = contact.adress;
+            const address = contact.address;
             const city = contact.city;
             // si le controle est true alors setItem dans le localstorage. sinon alert remplir le formulaires
             if (firstNameControle(regExControlName(firstName)) && lastNameControle(regExControlName(lastName)) &&
-                emailControle(regExControlEmail(email)) && adressControle(regExControlAdress(adress)) && cityControle(regExControlCity(city))) {
+                emailControle(regExControlEmail(email)) && adressControle(regExControlAdress(address)) && cityControle(regExControlCity(city))) {
                 localStorage.setItem("formulaire", JSON.stringify(contact));
 
                 // variable qui réunis les données a envoyé au serveur, les id des produits présent dans le panier, et les donnnées du formulaire récupérer dans le localStorage
@@ -93,7 +93,7 @@ function showForm(formls) {
                     products,
                     contact,
                 });
-                console.log(dataSubmit);
+
                 // envoie de l'objet dans le server
                 postOrder(dataSubmit);
             };
